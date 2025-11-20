@@ -1,0 +1,148 @@
+Mini-projet : Analyse des Avis Clients (Tunisie) avec la méthodologie CRISP-DM
+
+Sujet : Customers Review Analysis
+
+Contexte : Les entreprises qui souhaitent rester sur le marché doivent valoriser les commentaires de leurs clients. Analyser les avis des clients est essentiel pour comprendre leur satisfaction, identifier les points forts et faibles d'un produit ou d'un service, et faire des améliorations pointues.
+
+Objectif : Extraire des données pour n'importe quel produit spécifique sur le marché tunisien et analyser les avis des clients. Après l'extraction, vous pouvez effectuer une analyse des sentiments (Positif / Négatif / Neutre) pour tirer des conclusions éclairées. Il est possible d’extraire les données à partir des sites Orange, Ooredoo, etc.
+
+Outil de scraping Web recommandé : Beautiful Soup (la bibliothèque open source de Python) pour explorer un site Web et extraire les caractéristiques liées aux avis.
+
+Méthodologie CRISP-DM appliquée
+La méthodologie CRISP-DM (Cross-Industry Standard Process for Data Mining) se compose de six phases, que nous allons adapter à notre projet :
+1.Compréhension du Problème (Business Understanding)
+2.Compréhension des Données (Data Understanding)
+3.Préparation des Données (Data Preparation)
+4.Modélisation (Modeling)
+5.Évaluation (Evaluation)
+6.Déploiement (Deployment)
+
+
+1. Compréhension du Problème (Business Understanding)
+Objectif : Définir clairement les objectifs du projet et ses critères de succès du point de vue métier.
+Quel est le problème commercial que nous essayons de résoudre ?
+Comprendre la perception des clients sur un produit/service spécifique en Tunisie.
+Identifier les points forts et les points faibles pour guider les décisions d'amélioration.
+Mesurer la satisfaction globale des clients (sentiment).
+Quels sont les objectifs techniques ?
+Développer un script de web scraping robuste pour collecter des avis.
+Mettre en œuvre un modèle d'analyse de sentiments (Positif, Négatif, Neutre).
+Visualiser les résultats pour en tirer des conclusions.
+Critères de succès :
+Extraction réussie d'au moins X avis pour le produit/service choisi.
+Précision raisonnable du modèle d'analyse de sentiments (par exemple, F1-score > 0.7 sur un jeu de test).
+Capacité à identifier des thèmes récurrents ou des problèmes spécifiques mentionnés par les clients.
+Choix du produit/service et du site cible :
+Proposition : Concentrons-nous sur les avis concernant les offres Internet ou les smartphones sur le site d'un opérateur télécom tunisien comme Orange Tunisie ou Ooredoo Tunisie, ou même un site d'e-commerce tunisien comme MyTek ou Tunisie Pro.
+Exemple : Avis sur un smartphone spécifique (ex: Samsung Galaxy A54) sur MyTek.tn, ou avis sur un forfait internet Fibre d'Orange.
+Key Questions:
+
+What is the ratio of Positive vs. Negative feedback?
+
+What are the most frequent complaints (e.g., "Connexion," "Service Client," "Solde," "Bug")?
+
+Success Criteria: A dashboard or report showing sentiment trends and key topics.
+
+
+
+2. Compréhension des Données (Data Understanding)
+Objectif : Collecter les données initiales, les explorer pour identifier les problèmes de qualité et découvrir des insights préliminaires.
+Source des données : Pages web des sites e-commerce ou des opérateurs télécom tunisiens.
+Données à collecter :
+    Texte de l'avis client.
+    Note attribuée (si disponible, ex: 1 à 5 étoiles).
+    Nom d'utilisateur (si disponible).
+    Date de l'avis (si disponible).
+    Titre de l'avis (si disponible).
+    Nom du produit/service associé.
+Exploration préliminaire :
+    Structure HTML des pages d'avis (identification des balises div, p, span contenant les informations pertinentes).
+    Présence de pagination.
+    Exemples d'avis pour comprendre la langue (arabe tunisien, français, mélange).
+
+
+3. Préparation des Données (Data Preparation)
+Objectif : Nettoyer, transformer et enrichir les données pour qu'elles soient prêtes pour la modélisation.
+Nettoyage du texte :
+    Suppression des caractères spéciaux, des emojis, de la ponctuation non pertinente.
+    Mise en minuscule (pour la plupart des modèles de traitement du langage naturel).
+    Suppression des balises HTML résiduelles.
+Normalisation :
+    Suppression des stop words (mots courants qui n'apportent pas de sens, ex: "le", "la", "un"). Attention à la langue !
+    Lemmatisation/Stemming (réduction des mots à leur forme racine). Peut être complexe pour l'arabe tunisien.
+Traitement de la langue :
+    Identifier la langue principale des avis (français, arabe, dialecte tunisien). Cela influencera le choix des outils (stopwords, modèles pré-entraînés).
+    Gestion du texte mixte (français et arabe dans le même avis).
+Création de features :
+    Longueur de l'avis.
+    Nombre de mots.
+
+4. Modélisation (Modeling)!!!!!!!!
+Objectif : Appliquer diverses techniques de modélisation pour atteindre les objectifs du projet.
+Ici, l'analyse de sentiments.
+Approches pour l'analyse de sentiments :
+1. Basée sur des règles/lexiques (Lexicon-based) : Utiliser des dictionnaires de mots positifs et négatifs.
+Avantages : Simple à implémenter, pas besoin de données labellisées.
+Inconvénients : Moins précis, ne gère pas le contexte, l'ironie, le sarcasme. Nécessite un lexique adapté au tunisien/français.
+
+2.Basée sur le Machine Learning (Supervised ML) : Entraîner un modèle sur des avis labellisés.
+Avantages : Plus précis, s'adapte mieux aux spécificités de la langue.
+Inconvénients : Nécessite un jeu de données labellisé (qui peut être difficile à obtenir ou créer pour nous ).
+
+3.Basée sur le Deep Learning (Transfer Learning with Pre-trained Models) :
+Utiliser des modèles de transformeurs pré-entraînés (BERT, CamemBERT, AraBERT, XLM-R) et les fine-tuner.
+Avantages : État de l'art, très performant, gère bien le contexte et les nuances.
+Inconvénients : Nécessite plus de ressources de calcul et de la complexité technique.
+
+==>Approche pour ce projet (approche progressive) :
+Phase 1 (MVP) : Utiliser une approche lexicale pour le français (avec NLTK ou TextBlob) ou une approche simple de ML supervisé avec un petit jeu de données labellisé manuellement (si possible).
+Phase 2 (Amélioration) : Si les résultats ne sont pas satisfaisants et si vous avez le temps, explorer le fine-tuning d'un modèle de Deep Learning (ex: CamemBERT pour le français, ou un AraBERT/MBERT pour l'arabe/mixte).
+
+
+5. Évaluation (Evaluation)
+Objectif : Évaluer les modèles et les processus mis en œuvre pour s'assurer qu'ils répondent aux objectifs du problème commercial.
+    Pour le scraping :
+Vérifier le nombre d'avis extraits.
+Vérifier la qualité des données extraites (pas de données manquantes, format correct, ....).
+
+    Pour l'analyse de sentiments :
+Pour approche supervisée : Mesures classiques comme la précision (accuracy), le rappel (recall), la F1-score, la matrice de confusion.
+Pour approche lexicale : Évaluation manuelle d'un échantillon d'avis pour juger la pertinence des classifications.
+
+    Critères d'évaluation :
+Le modèle est-il capable de distinguer les avis positifs, négatifs et neutres de manière fiable ?
+Les résultats de l'analyse de sentiments sont-ils cohérents avec les attentes ?
+Les insights tirés sont-ils actionnables pour l'entreprise ?
+
+6. Déploiement (Deployment)
+Objectif : Mettre en production les résultats de l'analyse. Pour un mini-projet, cela signifie présenter les conclusions.
+    Rapport final : Synthèse des découvertes, visualisations, recommandations.
+    Présentation : Démontrer le fonctionnement du script de scraping et l'analyse de sentiments.
+    Livraisons :
+        Les notebooks Python.
+        Les données extraites (CSV/JSON).
+        Un rapport d'analyse.
+
+Outils:
+Langage de programmation : Python
+Environnement : Jupyter Notebooks (pour l'exploration et la présentation)
+Web Scraping :
+    requests : Pour faire des requêtes HTTP aux pages web.
+    BeautifulSoup4 : Pour parser le HTML et extraire les données.
+    selenium (optionnel) : Si le site utilise beaucoup de JavaScript et que BeautifulSoup seul ne suffit pas (par exemple, pour charger des commentaires dynamiquement).
+
+Manipulation et Analyse des Données :
+    pandas : Pour la manipulation et l'analyse des DataFrames.
+    numpy : Pour les opérations numériques.
+
+Traitement du Langage Naturel (NLP) :
+    nltk : Pour le prétraitement du texte (tokenisation, stop words).
+    scikit-learn : Pour les modèles de Machine Learning (vectorisation TF-IDF, classifieurs comme Naive Bayes, SVM, Logistic Regression).
+    TextBlob (pour le français) : Permet une analyse de sentiments lexicale simple.
+    huggingface/transformers (pour le Deep Learning) : Pour utiliser des modèles pré-entraînés comme CamemBERT, AraBERT, ou XLM-R.
+    Pytorch ou TensorFlow (si Deep Learning).
+
+Visualisation :
+    matplotlib
+    seaborn
+    wordcloud : Pour visualiser les mots les plus fréquents
