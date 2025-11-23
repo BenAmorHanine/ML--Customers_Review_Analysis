@@ -1,1 +1,5 @@
 draft.*
+
+chrome_driver.log
+*.log
+chrome_driver-win64/*
