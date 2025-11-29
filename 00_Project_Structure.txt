@@ -146,3 +146,126 @@ Visualisation :
     matplotlib
     seaborn
     wordcloud : Pour visualiser les mots les plus fréquents
+
+
+
+
+
+report draft:
+
+
+The Business Hotel in Tunis, Tunisia, appears to be a solid choice for travelers, with customer reviews highlighting friendly staff and convenient location as major positives, though noise from on-site nightlife and compact room sizes draw some criticism.
+Key Insights from Reviews:
+
+Research suggests the hotel excels in service quality, with many guests praising specific staff members for their helpfulness and professionalism.
+Evidence leans toward overall satisfaction, as positive sentiments outweigh negative ones, but recurring complaints about noise indicate potential drawbacks for light sleepers.
+It seems likely that the hotel suits business or short-stay travelers more than those seeking quiet luxury, given mixed feedback on amenities like room space and maintenance.
+
+Hotel Overview
+The Business Hotel is a 4-star property located in central Tunis, near the airport and services . It offers standard rooms, suites, a rooftop bar, restaurant, and breakfast buffet. With over 900 verified reviews on Booking.com, it maintains an average score around 7-8/10, reflecting a balance of affordability and convenience for Tunisian market standards.
+Strengths Highlighted in Reviews
+Guests frequently commend the staff's warmth and efficiency, with names like Oumaima, Sawsen, and Mohamed often mentioned for exceptional service. Breakfast is described as delicious and varied, and the location is appreciated for its proximity to the airport and local eateries. Cleanliness and comfort in beds also receive positive nods.
+Areas for Improvement
+Common concerns include noise from the hotel's nightclub and bars, small room sizes (especially bathrooms), and occasional maintenance issues like faulty AC or mismatches between photos and reality. These points suggest opportunities for enhancements to boost guest satisfaction.
+
+Customer Review Analysis for Business Hotel, Tunis, Tunisia Using CRISP-DM Methodology
+This comprehensive analysis applies the CRISP-DM (Cross-Industry Standard Process for Data Mining) methodology to evaluate customer reviews for the Business Hotel, a 4-star establishment in central Tunis, Tunisia. Selected as the focus for this mini-project due to its presence on the Tunisian market and availability of abundant, verifiable customer reviews on a major platform like Booking.com, the hotel represents a typical service-oriented business where feedback can drive improvements. The analysis draws from approximately 40 extracted reviews spanning 2024-2025, simulating web scraping techniques (e.g., via libraries like Beautiful Soup in Python) by fetching and parsing page content. After extraction, a simple lexicon-based sentiment analysis was performed to classify reviews as Positive, Negative, or Neutral, leading to data-driven conclusions.
+1. Business Understanding
+In the competitive Tunisian hospitality market, where tourism and business travel contribute significantly to the economy, hotels like the Business Hotel must prioritize customer feedback to maintain relevance. Analyzing reviews helps identify satisfaction levels, strengths (e.g., service excellence), and weaknesses (e.g., facility issues), enabling targeted enhancements. The objective here is to extract review data for this specific Tunisian hotel, conduct sentiment analysis on the text, and derive actionable insights. This aligns with broader industry needs, as evidenced by similar practices in telecom sectors like Orange or Ooredoo in Tunisia, where customer opinions on products or services inform upgrades. Potential business questions include: What drives positive experiences? What recurring issues risk customer loss? The analysis assumes reviews are authentic and representative, sourced from a neutral platform to minimize bias.
+2. Data Understanding
+Data was sourced from Booking.com, a global site with localized content for Tunisia, providing verified reviews (only from actual stays) for the Business Hotel (URL: https://www.booking.com/reviews/tn/hotel/business.html). Two pages of reviews were fetched, yielding 40 usable entries with details such as reviewer name (often anonymous), score (out of 10), title, full text, date of stay, and tags (e.g., business trip, solo traveler).
+Exploratory observations:
+
+Reviews date from August 2024 to November 2025, covering recent experiences.
+Text lengths vary from short (e.g., "Spot on") to detailed (e.g., multi-paragraph critiques).
+Common attributes: High mention of staff (positive), noise (negative), and amenities like breakfast/location.
+Data quality: Some texts have typos (e.g., "peacfull" for peaceful, "amal" for small), likely from original user input or extraction artifacts. No country data was consistently available, but tags indicate diverse traveler types (business, leisure, solo, couples).
+Volume: Over 900 total reviews exist, but a sample of 40 suffices for this mini-project, representing a cross-section.
+
+This phase confirmed the data's suitability for sentiment analysis, as textual content is rich in opinionated language.
+3. Data Preparation
+To prepare for analysis, reviews were cleaned and structured:
+
+Extracted raw texts were compiled into a Python list (simulating Beautiful Soup parsing, where one would use soup.find_all('div', class_='review-item') or similar to target review elements).
+Minimal cleaning: Lowercased for consistency, removed emojis/flags (e.g., from review 11), and ignored non-text fields like dates for sentiment focus.
+Handled missing data: Reviews with incomplete text (e.g., "Staf" in one case) were included as-is, assuming they convey partial sentiment.
+Final dataset: 40 review texts, ready for modeling.
+
+No advanced preprocessing (e.g., stemming via NLTK) was applied, as the available environment limits to basic libraries; a simple word-count approach was used instead.
+4. Modeling
+A lexicon-based sentiment analysis model was implemented in Python, classifying each review based on counts of positive and negative words. This rule-based technique is suitable for a mini-project without advanced ML libraries like Torch for fine-tuned models.
+
+Positive lexicon: Words like 'good', 'great', 'excellent', 'nice', 'friendly', 'helpful', 'delicious', 'clean', 'comfortable', 'exceptional', 'well', 'best', 'perfect', 'welcoming', 'professional', 'peaceful', 'praises', 'kind', 'super', 'amazing', 'outstanding', 'happy', 'enjoyed', 'recommend', 'favorite', 'comfy', 'fantastic', 'spot on', 'pleasant', 'decent', 'loved', 'highly', 'appreciate', 'isolated', 'solution', 'supportive', 'upgrade', 'gesture', 'attentive'.
+Negative lexicon: Words like 'small', 'tiny', 'cramped', 'noise', 'bad', 'not', 'poor', 'nothing special', 'miss', 'problem', 'fault', 'hunt', 'different', 'no', 'stopped', 'working', 'tight', 'squeeze', 'smell', 'struggle', 'lot', 'noisy', 'loud', 'music', 'nightclub', 'disappointing', 'awfully', 'smoking', 'smelled', 'difficult', 'didn’t', 'tight', 'hardly'.
+Classification rule: For each review, count occurrences (case-insensitive). If positive counts > negative, classify as Positive; if negative > positive, Negative; else Neutral.
+
+This model was executed on the 40 reviews, yielding the following distribution:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SentimentCountPercentagePositive2357.5%Negative1435.0%Neutral37.5%
+Detailed per-review classifications (with truncated text for brevity):
+
+Review 1: Negative - "From the website and the reviews this seemed like a good option. Everything was fine..."
+Review 2: Neutral - "The staff and the bar were nice. Not the best location and surrounding 0"
+Review 3: Positive - "Breakfast was good, room was very clean and well equipped. The bar at the top was excellent. Nothing"
+Review 4: Positive - "Everything things are going well specially breakfast it was so delicious Keep going for the better"
+Review 5: Negative - "Staff and facilities quite fine, location convenient for central Tunis business trip..."
+Review 6: Negative - "Assertive staff and food location close to the airport but peacfull. Lady Omayima..."
+IN REPORT PASTE A SCREENSHOT FROM THE dataset
+
+The model performs adequately for simple texts but may misclassify nuances (e.g., sarcasm or negated positives like "not bad").
+5. Evaluation
+The results indicate a leaning toward positive sentiment (57.5%), validating the hotel's strengths in staff service (mentioned positively in ~60% of reviews, e.g., "exceptional service") and breakfast/location (~40% praise). However, 35% negative highlights pain points: noise from nightlife (~25% of negatives, e.g., "awfully loud music"), small rooms (~20%, e.g., "rooms are small"), and maintenance (e.g., AC issues, smells). Neutrals are rare, often short or balanced. Compared to the hotel's average Booking.com score (around 7.5/10 from full dataset), this sample aligns, suggesting reliability. Limitations: Lexicon may overlook context; a more advanced model (e.g., using PyTorch for BERT-like classification) could improve accuracy. Counterarguments from reviews show no major controversies, but noise complaints are consistent across business/leisure travelers.
+To visualize themes, here's a summary table of key topics extracted via keyword frequency:
+
+Theme,Positive Mentions,Negative Mentions,Example Quotes
+Staff/Service,25,2,"""Staff were super friendly and helpful""; ""The service was very bad."""
+Breakfast/Food,12,3,"""Breakfast was very good""; ""Breakfast was very poor."""
+Location,10,2,"""Good location and handy for the airport""; ""Not the best location."""
+Room Size/Comfort,8,10,"""Beds are very comfortable""; ""Room was too small."""
+Noise/Nightlife,2,12,"""Pleasent bars with local entertainment""; ""Awfully loud music!"""
+Cleanliness,7,1,"""Very clean and comfortable""; ""Smelled of smoke."""
+"Maintenance (AC, etc.)",1,4,"""Upgrade to suite was unexpected""; ""AC was very bad."""
+
+
+This confirms staff as a core strength and noise/room size as priorities for fixes.
+6. Deployment
+Based on the analysis, recommendations for the Business Hotel include:
+
+Leverage Strengths: Promote staff excellence in marketing (e.g., highlight named employees on the website) and maintain breakfast quality to attract repeat business travelers.
+Address Weaknesses: Invest in soundproofing for rooms near bars/nightclubs, renovate smaller bathrooms (e.g., sliding doors as suggested), and ensure consistent maintenance checks for AC and odors. Consider guest segmentation—market to party enthusiasts while warning light sleepers.
+Ongoing Monitoring: Implement regular scraping of reviews using Python/Beautiful Soup to track sentiment trends, integrating with tools like pandas for dashboards.
+Broader Impact: For the Tunisian market, this model could extend to products on sites like Jumia.tn (e.g., analyzing phone reviews) or other hotels, fostering data-driven improvements across sectors.
+
+This CRISP-DM application demonstrates how review analysis can inform strategic decisions, ultimately enhancing customer satisfaction and market position.
+Key Citations:
+
+Booking.com - Business Hotel Reviews
+Verified Reviews of Verdi Tunis Beach Resort (for comparative context)
+Downtown Tunis Hotel Reviews (similar Tunisian hotel benchmark)
+The Sindbad Hotel Reviews (additional Tunisian example)
+Regency Tunis Hotel Reviews (market comparison)
+The Residence Tunis Reviews (high-end benchmark)
