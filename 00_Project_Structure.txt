@@ -92,7 +92,14 @@ For rows where you failed to scrape the rating, or to validate your data, use a 
  The "Lexicon" Approach (Fastest Fix)
 Since you don't have human ratings, you can use a pre-built library to "judge" the sentiment of the text. This generates the missing labels for you.
 Since your reviews are in French (and some Tunisian), we will use TextBlob-FR (specifically for French).
-Why this works for CRISP-DM: You are performing "Rule-based Classification." You can now evaluate this by reading 10 random rows and seeing if the computer guessed right.
+Why this works for CRISP-DM: You are performing "Rule-based Classification." 
+(Lexicon-based) est LA solution la plus simple, la plus rapide et la plus propre si tu n’as pas de ratings dans ton dataset Google Maps.
+
+Et oui : pour ton cas, TextBlob-FR est la meilleure option
+→ elle gère le français
+→ très simple à utiliser
+→ donne des polarity scores (–1 = négatif, +1 = positif)
+→ donc elle peut automatiquement créer les labels Positive / Negative / Neutral
 
 
 4. Modélisation (Modeling)!!!!!!!!
