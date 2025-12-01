@@ -76,6 +76,24 @@ Traitement de la langue :
 Création de features :
     Longueur de l'avis.
     Nombre de mots.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+NOTEEEEEE
+
+
+ Critique/Improvement:
+You currently have the Inputs (X) (your TF-IDF matrix), but you are missing the Target (Y) (Sentiment Labels: Positive/Negative/Neutral).
+In a Supervised Learning approach, you need labels to train the model.
+Since you scraped data from Booking/Expedia/Google, the Rating (Stars) is your ground truth.
+Problem: If you have rows where rating is NaN (failed scrape), you cannot use them for training unless you label them manually or use a lexicon.
+What to do 
+ Use a Lexicon for "Unknown" Ratings
+For rows where you failed to scrape the rating, or to validate your data, use a French Sentiment Lexicon library like TextBlob (with French extension) or vaderSentiment-fr.
+
+ The "Lexicon" Approach (Fastest Fix)
+Since you don't have human ratings, you can use a pre-built library to "judge" the sentiment of the text. This generates the missing labels for you.
+Since your reviews are in French (and some Tunisian), we will use TextBlob-FR (specifically for French).
+Why this works for CRISP-DM: You are performing "Rule-based Classification." You can now evaluate this by reading 10 random rows and seeing if the computer guessed right.
+
 
 4. Modélisation (Modeling)!!!!!!!!
 Objectif : Appliquer diverses techniques de modélisation pour atteindre les objectifs du projet.
