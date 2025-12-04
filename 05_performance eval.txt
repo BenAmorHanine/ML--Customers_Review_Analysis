@@ -1,0 +1,53 @@
+1️⃣ Accuracy et cross-validation
+
+Logistic Regression : 66,7 %
+
+Naive Bayes : 62,2 %
+
+SVM (Linear) : 68,1 % → meilleur modèle sur cross-validation
+
+✅ Conclusion : les performances sont acceptables pour un petit dataset, mais pas exceptionnelles. Elles reflètent le fait que le dataset est petit, probablement déséquilibré, et que la génération des labels est automatique via TextBlob-FR (donc bruitée).
+
+2️⃣ Performance sur tout le dataset
+
+Accuracy = 97,5 %
+
+F1-score (weighted) = 97,1 %
+
+Problème : ces valeurs sont trompeuses, car le dataset est petit et les classes sont déséquilibrées :
+
+Negative : 7
+
+Neutral : 74
+
+Positive : 120
+
+Le modèle prédit très bien les classes majoritaires (Neutral/Positive), mais mal la classe Minoritaire (Negative → f1-score 0,60).
+
+✅ Conclusion : le modèle est fort sur les avis majoritaires, mais faible pour les avis négatifs, donc la performance globale “accuracy” n’est pas un indicateur fiable seul.
+alors on a utilisé f1
+
+3️⃣ Justification des metrics
+
+Accuracy : simple et intuitive, mais inutilement élevée si classes déséquilibrées.
+
+F1-score (weighted) : combine précision et rappel, pondéré par support → mieux pour dataset déséquilibré.
+
+Classification report : donne précision, rappel et f1-score par classe, indispensable pour voir la performance sur la classe minoritaire (Negative).
+
+
+🔹 Synthèse
+
+Le SVM linéaire est le meilleur modèle pour ce dataset.
+
+Les metrics pondérées (F1-score weighted) sont plus fiables que l’accuracy brute.
+
+Les classes minoritaires (Negative) restent un défi.
+
+Pour améliorer :
+
+Plus de données annotées ou manuellement corrigées.
+
+Balance des classes (oversampling / undersampling).
+
+Essayer des embeddings plus riches (Word2Vec, FastText, CamemBERT pour français).
