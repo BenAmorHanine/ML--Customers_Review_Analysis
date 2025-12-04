@@ -11,7 +11,10 @@ stop_words_ar = set(['في', 'على', 'و', 'من', 'أن', 'إلى'])
 stemmer = SnowballStemmer('french')
 
 def process_review(text):
-    """Nettoyage, suppression ponctuation, stopwords, stemming"""
+    """Nettoyage, suppression ponctuation, stopwords, stemming
+    process_review transforme un texte brut en liste de tokens 
+    “propres” et normalisés pour le machine learning 
+    (TF-IDF, Bag-of-Words, Word2Vec, etc.)."""
     if(pd.isnull(text) or not isinstance(text, str) or len(text.strip()) == 0):
         return []
     # minuscules
