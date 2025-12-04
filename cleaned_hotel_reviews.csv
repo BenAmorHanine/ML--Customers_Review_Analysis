@@ -111,7 +111,6 @@ processed_text
 ['lador']
 "['no', 'text']"
 "['endroit', 'tres', 'sympath']"
-"['no', 'text']"
 ['lux']
 ['bien']
 "['bon', 'ambianc']"
@@ -120,16 +119,11 @@ processed_text
 "['comm', 'maison']"
 "['hôtel', 'vill', 'centr', 'vill']"
 "['ambianc', 'intim']"
-"['no', 'text']"
 "['hôtel', 'voyag', 'daffair']"
-"['no', 'text']"
 ['magnif']
 "['🏩🏩🏩🏩🍸🍺🍷🍹🍻🍖🍗🍢🍡🍝🌇🌇', '…']"
 "['hôtel', 'professionnel']"
-['bien']
 "['pai', 'tnd', 'chambr', 'tnd', 'dîn', 'restaur', 'l’hôtel', 'moment', 'départ', 'récept', 'a', 'fait', 'attendr', 'vérifi', 'minibar…', 'alor', 'qu’il', 'conten', 'chos', 'dep', 'tnd', '…']"
-['bien']
-['bien']
 "['lhôtel', 'bien', 'situ', 'plein', 'centr', 'tun', 'quarti', 'montplais', 'proxim', 'lavenu', 'habib', 'bourguib', 'métro', 'chambr', 'propr', 'climatis', 'insonoris', 'plutôt', 'petit', 'restaur', 'espac', '…']"
 "['lhôtel', 'magnif', 'tres', 'propr', 'personnel', 'récept', 'accueil', 'toujour', 'souri', 'chambr', 'peu', 'petit', 'lit', 'tres', 'confort', '…']"
 "['musiqu', 'club', 'réson', 'empêch', 'dorm', 'tout', 'nuit', 'réception', 'arriv', 'désagré', 'a', 'dit', 'asseoir', 'pend', 'quel', 'vérifi', 'passeport', 'fait', 'sattend', '…']"
@@ -188,7 +182,6 @@ processed_text
 "['lhôtel', 'global', 'correct', 'term', 'dinfrastructur', 'bruit', 'proven', 'restaurantterr', 'e', 'étag', 'import', 'lentend', 'parfait', 'e', 'nos', 'imagin', 'e', 'e', 'étag', 'weekend', 'difficil', '…']"
 "['chambr', 'propr', 'ambianc', 'agréabl', 'bar', 'panoram', 'sixiem', 'étag', 'excellent', 'demand', 'chambr', 'calm', 'lécart', 'bar']"
 "['laccueil', 'récept', 'saoussen', 'particuli', 'chaleur', 'lensembl', 'séjour', 'sest', 'bien', 'pass', 'sugger', 'mieux', 'inform', 'client', 'servic', 'propos', 'accompagn', 'afin', 'quil', 'puissent', 'profit', 'plein']"
-"['lhôtel', 'business', 'lun', 'meilleur', 'jy', 'séjourn', 'septembr', 'souhait', 'partag', 'expérient', 'cet', 'hôtel', 'vrai', 'exceptionnel', 'personnel', 'extrêm', 'aimabl', 'pol', 'chambr', 'impecc', '…']"
 "['confort', 'propr', 'confort', 'entrant', 'lhôtel', 'dit', '«', 'voilà', 'professionnel', '»', 'tien', 'remerci', 'chaleur', 'personnel', 'servic', 'oper', 'spécial', 'lhôtel', 'barış', 'attent', '…']"
 "['jai', 'pass', 'nuit', 'lhôtel', 'cet', 'tres', 'bien', 'personnel', 'tres', 'accueil', 'particuli', 'mme', 'naour', 'récept', 'nourritur', 'bon', 'a', 'discothequ', 'rezdechauss', 'bar', 'tap', 'létag', 'recommand', '…']"
 "['mattend', 'lorsqu', 'group', 'travail', 'retard', 'manquion', 'lheur', 'dîn', 'restaur', 'lhôtel', 'attendr', 'serveux', 'serv', 'remplac']"
